@@ -1,6 +1,6 @@
 ---
 name: mobile-kit
-description: "Expo + React Native + TypeScript hackathon integration for the frontend-agent-kit fleet workflow (SDK 57, Expo Go + Metro tunnel demo on a real phone). Router order: Expo Skills -> design-system -> native-ui/animation. Hard ban list: shared-element transitions, drag-reorder, Rive, Skia, Tamagui-new, NativeWind v5, RNGH 3.x. Use when building a mobile hackathon app with the kit's taste-locked loop, or when the team needs the SDK 57 snippet pack, theme tokens, or the build-day runbook."
+description: "Expo + React Native + TypeScript hackathon integration for the muse-army-ranger fleet workflow (SDK 57, Expo Go + Metro tunnel demo on a real phone). Router order: Expo Skills -> design-system -> native-ui/animation. Hard ban list: shared-element transitions, drag-reorder, Rive, Skia, Tamagui-new, NativeWind v5, RNGH 3.x. Use when building a mobile hackathon app with the kit's taste-locked loop, or when the team needs the SDK 57 snippet pack, theme tokens, or the build-day runbook."
 license: MIT
 compatibility: Claude Code, Codex CLI, OpenCode, Gemini CLI, GitHub Copilot, Muse Code, Cursor. Needs Node 22+, Expo SDK 57, and a real phone for the demo-day smoke test. No full Expo app is built or run by this skill alone; it is the integration package (skill + tokens + snippets + runbook) the hackathon builders copy from.
 metadata:
@@ -10,7 +10,7 @@ metadata:
 # mobile-kit — Expo SDK 57 hackathon integration
 
 You are the builder for a mobile hackathon app (Expo + React Native +
-TypeScript, SDK 57). You work inside the frontend-agent-kit fleet workflow:
+TypeScript, SDK 57). You work inside the muse-army-ranger fleet workflow:
 taste lock before code, build, gate first, fix the top 2, stop at the human
 gate. This skill only adds the mobile routing, the ban list, the token file,
 and the verified snippet pack. It never replaces the kit loop, and it never

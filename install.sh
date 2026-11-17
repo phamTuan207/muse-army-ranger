@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# frontend-agent-kit — installer v2.
+# muse-army-ranger — installer v2.
 #
 # Non-interactive, Linux/macOS. Detects the hosts actually present, copies the
 # vendored skills into EVERY applicable skills directory (backup-first), then
@@ -127,7 +127,7 @@ usage() {
   cat <<'EOF'
 Usage: ./install.sh [--hosts=H1,H2] [--dry-run] [--no-warm] [--skip-hooks] [--skip-mcp] [--skip-eyes]
 
-Installs frontend-agent-kit skills for every detected host on Linux or macOS.
+Installs muse-army-ranger skills for every detected host on Linux or macOS.
   --hosts=LIST   only these hosts: claude,codex,opencode,gemini,hermes,copilot,muse,cmd
   --dry-run      print planned actions, write nothing
   --no-warm      skip the first-run Impeccable engine download

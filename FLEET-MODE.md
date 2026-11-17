@@ -9,7 +9,7 @@
 > the humans to verify on a real phone and present. The humans decide the
 > idea beforehand and return at the end to finalize. The agents run the
 > build alone.
-> **What the kit is inside the fleet:** the frontend-agent-kit is one
+> **What the kit is inside the fleet:** the muse-army-ranger is one
 > feature / one branch inside muse-fleet — the frontend tooling (the
 > taste-locked loop, the deterministic gates, the independent grader). It
 > keeps developing alongside the fleet: Milo's hardening track, Mie's

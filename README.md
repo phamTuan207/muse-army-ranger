@@ -1,4 +1,6 @@
-# Frontend Agent Kit
+# Muse Army Ranger
+
+> **Đổi tên 17/11/2026:** repo này trước là `frontend-agent-kit` (rồi `muse-fleet`) — link cũ tự redirect. Repo giờ không chỉ frontend: thêm mobile, backend và hackathon skills, xem § "Phạm vi gói".
 
 Bộ skill UI/UX dùng chung cho **Claude Code, Codex, OpenCode, Gemini CLI, GitHub Copilot, Hermes Agent, Muse Code, CommandCode (`cmd`) và Cursor** trên Linux và macOS. Cài global một lần, dùng trong mọi project.
 
@@ -16,8 +18,8 @@ Bộ skill UI/UX dùng chung cho **Claude Code, Codex, OpenCode, Gemini CLI, Git
 Cần `git`, `bash`, `python3` và kết nối mạng cho lần tải engine Impeccable đầu tiên. Các host cần được cài riêng trước.
 
 ```bash
-git clone https://github.com/phamTuan207/frontend-agent-kit.git
-cd frontend-agent-kit
+git clone https://github.com/phamTuan207/muse-army-ranger.git
+cd muse-army-ranger
 ./install.sh
 ./verify.sh
 ```
@@ -26,10 +28,10 @@ Sau đó **mở phiên mới** của host bạn dùng. Script sao lưu bản ski
 
 ## For AI agents — paste this with the repo link
 
-> **Dán nguyên đoạn dưới đây cùng với link repo** (`https://github.com/phamTuan207/frontend-agent-kit`) **vào agent của bạn:**
+> **Dán nguyên đoạn dưới đây cùng với link repo** (`https://github.com/phamTuan207/muse-army-ranger`) **vào agent của bạn:**
 >
 > ```
-> Install the frontend-agent-kit for yourself from https://github.com/phamTuan207/frontend-agent-kit.
+> Install the muse-army-ranger for yourself from https://github.com/phamTuan207/muse-army-ranger.
 > Read AGENTS.md in the repo first and follow it exactly.
 > Clone the repo (or `git pull --ff-only` if you already have it), run `./install.sh`,
 > then `./verify.sh`. Detect which hosts are installed on this machine
@@ -87,10 +89,10 @@ Ví dụ: “Dùng `frontend-kit` thiết kế landing page cho ứng dụng h�
 
 | Ứng dụng | Cài | Xác nhận đã nạp (sau phiên mới) |
 |---|---|---|
-| **Claude Code** | `./install.sh` (copy `~/.claude/skills/` ONLY — `~/.agents/skills/` is NOT written for a Claude-only install; it appears only when another host sharing that dir is also installed); hoặc đường plugin (**UNVERIFIED** — chưa có bản ghi kiểm chứng lạnh; xem lưu ý đường plugin dưới): `/plugin marketplace add phamTuan207/frontend-agent-kit` rồi `/plugin install frontend-agent-kit@frontend-agent-kit` | `/skills` |
+| **Claude Code** | `./install.sh` (copy `~/.claude/skills/` ONLY — `~/.agents/skills/` is NOT written for a Claude-only install; it appears only when another host sharing that dir is also installed); hoặc đường plugin (**UNVERIFIED** — chưa có bản ghi kiểm chứng lạnh; xem lưu ý đường plugin dưới): `/plugin marketplace add phamTuan207/muse-army-ranger` rồi `/plugin install muse-army-ranger@muse-army-ranger` | `/skills` |
 | **Codex** | `./install.sh` (copy `~/.agents/skills/` + hedge `~/.codex/skills/` — xem lưu ý dưới) | `$` / `/skills`; plugin mới cần `/new` |
 | **OpenCode** | `./install.sh` (copy `~/.config/opencode/skills/` + `~/.agents/skills/`); lệnh `/impeccable` và `/frontend-kit` đi kèm | Khởi động lại, skill xuất hiện trong session; `/impeccable` phản hồi |
-| **Gemini CLI** | `./install.sh` (copy `~/.gemini/skills/` + `~/.agents/skills/`); hoặc `gemini skills install https://github.com/phamTuan207/frontend-agent-kit.git --consent` | `/skills list` |
+| **Gemini CLI** | `./install.sh` (copy `~/.gemini/skills/` + `~/.agents/skills/`); hoặc `gemini skills install https://github.com/phamTuan207/muse-army-ranger.git --consent` | `/skills list` |
 | **GitHub Copilot** | `./install.sh` (copy `~/.copilot/skills/` + ghi `.github/copilot-instructions.md` — Copilot KHÔNG đọc file skill Claude/Cursor; file `.github/copilot-instructions.md` mới là artefact Copilot thực sự đọc, bản copy trong `~/.copilot/skills/` một mình không phải là bản cài Copilot hoạt động được) | Chỉ hoạt động ở VS Code agent mode / Copilot CLI / cloud agent — không phải inline completion hay plain chat |
 | **Hermes Agent** | `./install.sh` (copy `~/.hermes/skills/` + `~/.agents/skills/`; hoặc trỏ `skills.external_dirs` tới `~/.agents/skills`) | `hermes skills list` |
 | **Muse (agent)** | `./install.sh --hosts=muse` (copy `~/workspace/custom-skills/` ONLY) — host `muse` là Muse agent runtime có quyền workspace, không phải Muse Code; `~/workspace/custom-skills/` là đường cài làm việc được của runtime này (VERIFIED: runtime này nạp custom skill từ đó) | Liệt kê skill trong session mới |
@@ -102,9 +104,9 @@ Ví dụ: “Dùng `frontend-kit` thiết kế landing page cho ứng dụng h�
 
 **Một lệnh nhanh theo host:**
 
-- **Claude Code:** đường plugin **UNVERIFIED** (chưa kiểm chứng lạnh; đường đã kiểm chứng là `./install.sh`): `/plugin marketplace add phamTuan207/frontend-agent-kit` → `/plugin install frontend-agent-kit@frontend-agent-kit`
-- **Codex:** đường plugin **UNVERIFIED** (chưa kiểm chứng lạnh; đường đã kiểm chứng là `./install.sh`): `codex plugin marketplace add phamTuan207/frontend-agent-kit` → `codex plugin add frontend-agent-kit@frontend-agent-kit` (sau đó `/new`; nếu `add` lỗi, thử `install` — xem `templates/install/codex.md`)
-- **Gemini CLI:** `gemini skills install https://github.com/phamTuan207/frontend-agent-kit.git --consent` (cần bấm consent trên UI khi kích hoạt lần đầu)
+- **Claude Code:** đường plugin **UNVERIFIED** (chưa kiểm chứng lạnh; đường đã kiểm chứng là `./install.sh`): `/plugin marketplace add phamTuan207/muse-army-ranger` → `/plugin install muse-army-ranger@muse-army-ranger`
+- **Codex:** đường plugin **UNVERIFIED** (chưa kiểm chứng lạnh; đường đã kiểm chứng là `./install.sh`): `codex plugin marketplace add phamTuan207/muse-army-ranger` → `codex plugin add muse-army-ranger@muse-army-ranger` (sau đó `/new`; nếu `add` lỗi, thử `install` — xem `templates/install/codex.md`)
+- **Gemini CLI:** `gemini skills install https://github.com/phamTuan207/muse-army-ranger.git --consent` (cần bấm consent trên UI khi kích hoạt lần đầu)
 - **Các host còn lại:** `./install.sh` là đường chính.
 
 **Lưu ý đường plugin:** Đường plugin (`marketplace add`) là **UNVERIFIED** — chưa có bản ghi kiểm chứng lạnh nào cho `marketplace add` của repo này; `./install.sh` là đường duy nhất đã kiểm chứng. (M1 PARKED: publish + verify listing only.) Plugin route delivers only the 6 canonical skills in `./skills/`; GSAP skills, Impeccable variants, reference data and OpenCode commands are install.sh-only. (Câu chữ theo `.claude-plugin/plugin.json` / `.codex-plugin/plugin.json`.) Muốn đủ 15 skill + dữ liệu tham chiếu + các lệnh OpenCode `/impeccable` và `/frontend-kit`, chạy `./install.sh`.

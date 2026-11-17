@@ -1,7 +1,7 @@
-# AGENTS.md — Install + use contract for frontend-agent-kit v2
+# AGENTS.md — Install + use contract for muse-army-ranger v2
 
 > **This file is the machine-readable install contract.** If a user gave you only the repo link
-> (`https://github.com/phamTuan207/frontend-agent-kit`), this file is your instruction set.
+> (`https://github.com/phamTuan207/muse-army-ranger`), this file is your instruction set.
 > Follow it in order. Do not improvise replacements for a failing command — report the exact
 > error and stop at that step.
 
@@ -175,16 +175,16 @@ CPU architecture, and which hosts are actually installed on this machine
 
 ### Step 2 — Clone or pull (idempotent)
 ```bash
-git clone https://github.com/phamTuan207/frontend-agent-kit.git
+git clone https://github.com/phamTuan207/muse-army-ranger.git
 # — or, if the repo already exists locally:
-cd frontend-agent-kit && git pull --ff-only
+cd muse-army-ranger && git pull --ff-only
 ```
 Fallback if `git` is missing or the clone fails: download the `main` tarball
-(`https://github.com/phamTuan207/frontend-agent-kit/archive/refs/heads/main.tar.gz`),
+(`https://github.com/phamTuan207/muse-army-ranger/archive/refs/heads/main.tar.gz`),
 extract it, and continue from the extracted directory. If neither works, stop and
 report the exact error — do not invent another download source.
 Clone OUTSIDE the project dir: the project you build must not contain the kit's
-own clone (`frontend-agent-kit/` from this step) — the gate excludes a nested
+own clone (`muse-army-ranger/` from this step) — the gate excludes a nested
 kit clone from its scans except the §1.1 secret text pass, which scans the clone
 (D34), so a build inside the clone's parent dir
 gates an incomplete tree. If the gate fails on files under such a clone, move the
@@ -192,7 +192,7 @@ clone out of the project and re-run.
 
 ### Step 3 — Run the installer (non-interactive)
 ```bash
-cd frontend-agent-kit
+cd muse-army-ranger
 ./install.sh
 ./verify.sh
 ```

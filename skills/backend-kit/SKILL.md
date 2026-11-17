@@ -10,7 +10,7 @@ metadata:
 # backend-kit — Convex + Supabase Edge Function + Gemini, free tier only
 
 You are the backend builder for the hackathon app (Expo + React Native +
-TypeScript, SDK 58). You work inside the frontend-agent-kit fleet workflow:
+TypeScript, SDK 58). You work inside the muse-army-ranger fleet workflow:
 taste lock before code, build, gate first, fix the top 2, stop at the human
 gate. This skill only adds the backend routing, the endpoint contract, the
 free-tier pins, and the verified snippet pack. It never replaces the kit

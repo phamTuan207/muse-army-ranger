@@ -1,4 +1,4 @@
-# GEMINI.md — Install + use contract for frontend-agent-kit v2
+# GEMINI.md — Install + use contract for muse-army-ranger v2
 
 > **This file is the Gemini extension context pointer.** It carries the same contract as
 > `AGENTS.md` (repo root). If the two ever disagree, `AGENTS.md` wins — report the
@@ -9,13 +9,13 @@
 1. Read `README.md`, `SOURCES.md` and `AGENTS.md` in this repo.
 2. Clone or pull (idempotent):
    ```bash
-   git clone https://github.com/phamTuan207/frontend-agent-kit.git
-   # — or, if already cloned: cd frontend-agent-kit && git pull --ff-only
+   git clone https://github.com/phamTuan207/muse-army-ranger.git
+   # — or, if already cloned: cd muse-army-ranger && git pull --ff-only
    ```
    Fallback without `git`: download the `main` tarball and extract it.
 3. Run the non-interactive installer, then the verifier:
    ```bash
-   cd frontend-agent-kit
+   cd muse-army-ranger
    ./install.sh
    ./verify.sh
    ```
@@ -25,7 +25,7 @@
    `~/.local/share/agent-design-references/` and the OpenCode command (harmless here).
    `--no-warm` skips the first-run Impeccable engine download.
    **Accelerator (same result, one command):**
-   `gemini skills install https://github.com/phamTuan207/frontend-agent-kit.git --consent`
+   `gemini skills install https://github.com/phamTuan207/muse-army-ranger.git --consent`
    — activation requires a UI consent prompt per skill (human step, not install).
    Antigravity users: Antigravity reads `~/.gemini/antigravity-cli/skills/` +
    `.agents/skills/` — the `~/.agents/skills/` copy covers both.

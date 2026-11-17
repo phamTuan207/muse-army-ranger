@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# check-versions.sh — warn-only drift check for frontend-agent-kit pins.
+# check-versions.sh — warn-only drift check for muse-army-ranger pins.
 #
 # Compares each vendored pin (SOURCES.md / the vendored trees) with the
 # upstream latest and WARNS on drift. It NEVER upgrades anything (A4):

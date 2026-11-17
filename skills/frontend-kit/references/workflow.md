@@ -1,6 +1,6 @@
 # Workflow spec — the taste-locked deterministic-gate loop (condensed §1)
 
-Source: `research/SYNTHESIS.md` §1 (frontend-agent-kit v2, 2026-11-10) — workspace research note, not shipped in this repo.
+Source: `research/SYNTHESIS.md` §1 (muse-army-ranger v2, 2026-11-10) — workspace research note, not shipped in this repo.
 Evidence labels: **VERIFIED** = a primary source was read (URL + date);
 **CLAIMED** = a source says so, not independently checked; **CHƯA ĐỌC** =
 not read, never presented as read. This file condenses the loop; the

@@ -29,7 +29,7 @@ file-copy path must not).
 the matrix runs without Node. Record the actual assignment when the test runs.)
 
 **Input (identical every run):** the repo link
-`https://github.com/phamTuan207/frontend-agent-kit` + the verbatim paste-prompt from
+`https://github.com/phamTuan207/muse-army-ranger` + the verbatim paste-prompt from
 `templates/install/<host>.md` (variant A) or the one-command accelerator where one
 exists (variant B — see §4). **No human intervention beyond the paste**, except
 approval/auth dialogs the prompt explicitly predicts. Record every approval dialog shown.

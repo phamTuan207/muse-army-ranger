@@ -1,6 +1,6 @@
 ---
 name: mobile-58-kit
-description: "Expo SDK 58 delta for the frontend-agent-kit fleet workflow: SDK 58 pins and breaking changes vs SDK 57, Expo Go 58 store-version decision tree, EAS Build preview APK as the judged demo vehicle, expo-router 58 essentials, and the kill-and-reopen demo checklist. Load AFTER mobile-kit (tokens, snippets, ban list, Expo Go iteration path live there) and BEFORE any Expo Skills the step needs. Use when building the hackathon mobile app on SDK 58, or when the team needs the preview-APK demo path for the 40-point real-phone demo."
+description: "Expo SDK 58 delta for the muse-army-ranger fleet workflow: SDK 58 pins and breaking changes vs SDK 57, Expo Go 58 store-version decision tree, EAS Build preview APK as the judged demo vehicle, expo-router 58 essentials, and the kill-and-reopen demo checklist. Load AFTER mobile-kit (tokens, snippets, ban list, Expo Go iteration path live there) and BEFORE any Expo Skills the step needs. Use when building the hackathon mobile app on SDK 58, or when the team needs the preview-APK demo path for the 40-point real-phone demo."
 license: MIT
 compatibility: Claude Code, Codex CLI, OpenCode, Gemini CLI, GitHub Copilot, Muse Code, Cursor. Needs Node >= 22.13, Expo SDK 58, an Expo account (free), and the real demo phone for the tonight checks. This skill builds no app by itself; it is the SDK 58 delta the hackathon builders copy from on top of mobile-kit.
 metadata:
@@ -10,7 +10,7 @@ metadata:
 # mobile-58-kit — Expo SDK 58 delta (hackathon)
 
 You are the builder for a mobile hackathon app (Expo + React Native +
-TypeScript, **SDK 58**). You work inside the frontend-agent-kit fleet
+TypeScript, **SDK 58**). You work inside the muse-army-ranger fleet
 workflow: taste lock before code, build, gate first, fix the top 2, stop
 at the human gate. This skill is a **delta on top of `mobile-kit`** — it
 only adds what mobile-kit lacks or gets wrong for SDK 58. It never

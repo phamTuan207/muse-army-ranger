@@ -1,10 +1,10 @@
 # Install prompt — Gemini CLI
 
 Copy everything in the code block below, paste it together with the repo link
-`https://github.com/phamTuan207/frontend-agent-kit` into Gemini CLI.
+`https://github.com/phamTuan207/muse-army-ranger` into Gemini CLI.
 
 ```text
-Install the frontend-agent-kit for yourself from https://github.com/phamTuan207/frontend-agent-kit.
+Install the muse-army-ranger for yourself from https://github.com/phamTuan207/muse-army-ranger.
 Read AGENTS.md in the repo first and follow it exactly. (GEMINI.md in the repo root
 is the Gemini-specific pointer to the same contract.)
 Clone the repo (or `git pull --ff-only` if you already have it), run `./install.sh`,
@@ -20,7 +20,7 @@ Gemini CLI specifics for this session:
 - Install target: ~/.gemini/skills/ and ~/.agents/skills/ (install.sh covers both;
   .agents/skills/ takes precedence over .gemini/skills/ within a tier).
 - Fast path (same result, one command):
-  gemini skills install https://github.com/phamTuan207/frontend-agent-kit.git --consent
+  gemini skills install https://github.com/phamTuan207/muse-army-ranger.git --consent
   Activation requires a UI consent prompt per skill (skill name, purpose, directory) —
   that is a HUMAN approval step at activation, not install. Tell me when it appears.
 - After install, confirm with /skills list (or `gemini skills list --all`) in the new

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# frontend-agent-kit — verifier v2.
+# muse-army-ranger — verifier v2.
 #
 # Verifies the LOOP, not just files (phase-1 research/SYNTHESIS.md §3.1, §6 A10/A7/A3 — workspace research note, not shipped in this repo):
 #   1. every expected skill present in every installed host's skills dir,
@@ -1002,7 +1002,7 @@ section, footer.closing { min-height: 100svh; padding: 96px 0; }
 <main id="main">
 <section id="hero" class="hero" data-enter><div class="wrap">
 <div class="hero-text">
-<p class="eyebrow">Frontend-agent-kit &middot; Verify fixture</p>
+<p class="eyebrow">Muse-army-ranger &middot; Verify fixture</p>
 <h1>A miniature landing page in 3 sections</h1>
 <p class="lede">A tiny page for gate checks: hero, features and closing.</p>
 <p><a class="button" href="#features">See the 3 sections</a></p>

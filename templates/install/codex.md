@@ -1,10 +1,10 @@
 # Install prompt — Codex CLI
 
 Copy everything in the code block below, paste it together with the repo link
-`https://github.com/phamTuan207/frontend-agent-kit` into Codex.
+`https://github.com/phamTuan207/muse-army-ranger` into Codex.
 
 ```text
-Install the frontend-agent-kit for yourself from https://github.com/phamTuan207/frontend-agent-kit.
+Install the muse-army-ranger for yourself from https://github.com/phamTuan207/muse-army-ranger.
 Read AGENTS.md in the repo first and follow it exactly.
 Clone the repo (or `git pull --ff-only` if you already have it), run `./install.sh`,
 then `./verify.sh`. Detect which hosts are installed on this machine and confirm each
@@ -19,8 +19,8 @@ Codex specifics for this session:
 - Install target: ~/.agents/skills/ AND ~/.codex/skills/ (install.sh covers both — the
   two primary sources disagree on the Codex skills dir, so install to both until the
   clean-env test resolves it).
-- Fast path (UNVERIFIED — no cold-verification record; the verified route is `./install.sh`): codex plugin marketplace add phamTuan207/frontend-agent-kit
-  then codex plugin add frontend-agent-kit@frontend-agent-kit, then start a NEW session
+- Fast path (UNVERIFIED — no cold-verification record; the verified route is `./install.sh`): codex plugin marketplace add phamTuan207/muse-army-ranger
+  then codex plugin add muse-army-ranger@muse-army-ranger, then start a NEW session
   with /new before using the plugin's skills.
 - After install, confirm with $ or /skills in the new session; check plugins with /plugins.
 - MCP config is TOML: ~/.codex/config.toml uses [mcp_servers.<name>] tables. JSON

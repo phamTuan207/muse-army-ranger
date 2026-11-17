@@ -1,4 +1,4 @@
-# Copilot instructions — frontend-agent-kit
+# Copilot instructions — muse-army-ranger
 
 > Copilot does NOT load Claude/Cursor skill files (GSAP README, VERIFIED).
 > This file is the Copilot surface for the kit. It points at the orchestrator
@@ -13,7 +13,7 @@ polish of any UI — follow the **frontend-kit orchestrator**:
    - in a repo with the kit: `skills/frontend-kit/SKILL.md`
    - otherwise, if installed: `~/.agents/skills/frontend-kit/SKILL.md`
    - if neither exists, the kit is not installed in this environment — say so
-     and point at the repo (`https://github.com/phamTuan207/frontend-agent-kit`,
+     and point at the repo (`https://github.com/phamTuan207/muse-army-ranger`,
      `./install.sh`), instead of improvising a workflow.
 2. Taste lock before any HTML: `design/TASTE.md` + `design/tokens.css` +
    `design/references/` are committed BEFORE the build. Fixes go to

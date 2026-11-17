@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Deterministic gate for frontend-agent-kit (phase-1 research/SYNTHESIS.md §1 step 3 — workspace research note, not shipped in this repo),
+# Deterministic gate for muse-army-ranger (phase-1 research/SYNTHESIS.md §1 step 3 — workspace research note, not shipped in this repo),
 # LEG 1 of 2 (reconciled 2026-11-10, probe 2): leg 1 is this file (taste
 # lock + impeccable detect + static checks); leg 2 is gate.mjs (copy-lint
 # + consistency browser leg). A "gate pass" means BOTH legs green on the

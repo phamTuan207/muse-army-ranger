@@ -1,10 +1,10 @@
 # Install prompt — Claude Code
 
 Copy everything in the code block below, paste it together with the repo link
-`https://github.com/phamTuan207/frontend-agent-kit` into Claude Code.
+`https://github.com/phamTuan207/muse-army-ranger` into Claude Code.
 
 ```text
-Install the frontend-agent-kit for yourself from https://github.com/phamTuan207/frontend-agent-kit.
+Install the muse-army-ranger for yourself from https://github.com/phamTuan207/muse-army-ranger.
 Read AGENTS.md in the repo first and follow it exactly.
 Clone the repo (or `git pull --ff-only` if you already have it), run `./install.sh`,
 then `./verify.sh`. Detect which hosts are installed on this machine and confirm each
@@ -17,8 +17,8 @@ is missing.
 
 Claude Code specifics for this session:
 - Install target: ~/.claude/skills/ and ~/.agents/skills/ (install.sh covers both).
-- Fast path (UNVERIFIED — no cold-verification record; the verified route is `./install.sh`): /plugin marketplace add phamTuan207/frontend-agent-kit
-  then /plugin install frontend-agent-kit@frontend-agent-kit
+- Fast path (UNVERIFIED — no cold-verification record; the verified route is `./install.sh`): /plugin marketplace add phamTuan207/muse-army-ranger
+  then /plugin install muse-army-ranger@muse-army-ranger
   (note: a plugin can be installed-but-off via `defaultEnabled` — check /plugin → Installed).
 - After install, run /reload-skills (or start a new session) and confirm with /skills.
 - Hook (best effort): `npx --yes impeccable@4.8.2 install --providers=claude --scope=global` (pinned — the form `install.sh` runs; never bare `npx impeccable install`), then

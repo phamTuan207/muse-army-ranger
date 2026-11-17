@@ -1,10 +1,10 @@
 # Install prompt — Hermes Agent
 
 Copy everything in the code block below, paste it together with the repo link
-`https://github.com/phamTuan207/frontend-agent-kit` into Hermes Agent.
+`https://github.com/phamTuan207/muse-army-ranger` into Hermes Agent.
 
 ```text
-Install the frontend-agent-kit for yourself from https://github.com/phamTuan207/frontend-agent-kit.
+Install the muse-army-ranger for yourself from https://github.com/phamTuan207/muse-army-ranger.
 Read AGENTS.md in the repo first and follow it exactly.
 Clone the repo (or `git pull --ff-only` if you already have it), run `./install.sh`,
 then `./verify.sh`. Detect which hosts are installed on this machine and confirm each

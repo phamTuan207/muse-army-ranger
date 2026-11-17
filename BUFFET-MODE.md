@@ -65,7 +65,7 @@ The coordinator spawns the neutral merger and the judge as **its own subagents, 
 
 ## 3. Where the work lives
 
-- **This repo (the kit):** the skill, the loop, the runbook, `coord/`. Clone-and-go: `git clone https://github.com/phamTuan207/frontend-agent-kit.git`, follow the README paste-prompt, run `./install.sh` then `./verify.sh`.
+- **This repo (the kit):** the skill, the loop, the runbook, `coord/`. Clone-and-go: `git clone https://github.com/phamTuan207/muse-army-ranger.git`, follow the README paste-prompt, run `./install.sh` then `./verify.sh`.
 - **Each agent's work:** its own **clone** on its own machine, its own branch `buffet/<name>`. One agent = one branch = one clone. Nobody edits another agent's files. Nobody edits `coord/BOARD.md` except the coordinator. Each agent edits ONLY its own `coord/<name>.md` (append-mostly).
 - **The run's mainline:** `buffet/main`. The coordinator creates it at run start from `main` if it does not exist (setup commands below) and records `Mainline: buffet/main` in a board field. Only the coordinator merges into it.
 - **The run log:** `coord/run-log.jsonl` — **coordinator-only**. Agents log by writing events in their own `coord/<name>.md` files; the coordinator transcribes into `coord/run-log.jsonl` on each merge pass. Single writer, no merge conflict, at the cost of up to 30 min of log latency. (v1's "each agent appends to the shared log" was corrected: two agents appending one line each from different branches conflict on the log when the coordinator lands the second branch — both appends sit at the same end-of-file position relative to the common base — and v1 had no log-merge rule.) The run log is append-only: never edit a line; supersede by appending. **Run-log entry schema (minimal, binding — this is what F14/F21 "re-append the loser's rows from the run log" reads back):** one JSON object per line with `ts` (UTC ISO-8601, the coordinator's observation time), `actor` (agent name), `term` (coordinator-term at the time), `event` (e.g. `claim`, `award`, `land`, `lapse`, `takeover`, `board`), `slice` (slice id or `—`), and `board-row` (snapshot of the affected board row: slice / owner / status / expected-min / files / notes), and `board-fields` (snapshot of the board-level fields at the time: `Deputy`, `coordinator-term`, `Flagged files` — so a two-term board conflict over board-level fields can be re-appended from the log, F14/F21, not just slice rows). The three pre-existing entries (2026-11-10) predate this schema and carry no `ts`/`board-row` fields — they are legacy, not a pattern to copy.
@@ -90,8 +90,8 @@ The coordinator writes a **"Run trigger" section at the top of `coord/BOARD.md` 
 
 ```bash
 # Each agent, on its own machine (clone + branch):
-git clone https://github.com/phamTuan207/frontend-agent-kit.git
-cd frontend-agent-kit
+git clone https://github.com/phamTuan207/muse-army-ranger.git
+cd muse-army-ranger
 git checkout -b buffet/<name>        # or: git checkout buffet/<name>  (if the branch already exists)
 # ... work, commit, push:
 git push -u origin buffet/<name>

@@ -124,7 +124,7 @@ prompt for discussion.
    A project copied at an older template version refuses the lock
    until the templates are re-copied (D36). Clone the kit OUTSIDE the
    project dir: the project dir must not contain the kit's own clone
-   (`frontend-agent-kit/` from the install step) — the gate excludes a
+   (`muse-army-ranger/` from the install step) — the gate excludes a
    nested kit clone from its scans except the §1.1 secret text pass,
    which scans the clone (D34), so do not build inside
    the clone's parent dir; if the gate fails on files under such a clone,
@@ -780,7 +780,7 @@ written) — a pass with no artifact is a self-assertion, not a record.
 + notes, never a pass. A gate pass in the run log is a claim, not a
 proof — re-run the gate before landing (D33). **Target scope (D14, GAP-12):** gate the project
 dir (`gate.sh --target <dir>`). A nested copy of the kit's own repo clone
-(`frontend-agent-kit/` from the install step) is NOT project content:
+(`muse-army-ranger/` from the install step) is NOT project content:
 the gate excludes it from every scan except the §1.1 secret text pass,
 which scans the clone (D34), and says so in the leg-1 log — if
 the gate fails on files under such a clone, move the clone out of the

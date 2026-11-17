@@ -1,4 +1,4 @@
-# Muse-app paste packet — frontend-agent-kit v2 (slim)
+# Muse-app paste packet — muse-army-ranger v2 (slim)
 
 > **Read this first — the honest limit.**
 >
