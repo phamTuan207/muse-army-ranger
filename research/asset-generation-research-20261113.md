@@ -42,7 +42,7 @@
 
 ## 4. Brand icons — incl. the "Claude Code icon" repo
 
-The repo dang meant is almost certainly **Simple Icons** (it is the repo that ships a `claude` icon used as the Claude Code mark).
+The repo the owner meant is almost certainly **Simple Icons** (it is the repo that ships a `claude` icon used as the Claude Code mark).
 
 | Name | What it does | URL | License | Expo fit |
 |---|---|---|---|---|
@@ -63,7 +63,7 @@ The repo dang meant is almost certainly **Simple Icons** (it is the repo that sh
 | **Hugging Face Spaces** | Free open-source models, queued, no card. | Optional account. | Good for trying models; queues can be slow; raster output only. |
 | **Leonardo / Ideogram / Firefly / Recraft / Canva** | Small daily/weekly/monthly credits (Leonardo 150 tokens/day; Ideogram 30 credits/week; Firefly ~25 credits/mo; Canva ~50 lifetime). | Account required; free generations often public. | Too small / too public for a demo pipeline; manual one-offs only. |
 
-## 6. Figma editability (NEW criterion from dang — prefer, not mandatory)
+## 6. Figma editability (NEW criterion from the owner — prefer, not mandatory)
 
 Rule of thumb: **any SVG file can be dragged onto the Figma canvas and edited as vectors** (recolour, resize, reshape, combine). A dedicated Figma plugin/file is a bonus: it lets designers search + insert without leaving Figma, and (for component libraries) keeps Figma ↔ code in sync.
 
@@ -107,4 +107,4 @@ Scored on: SVG-first output, Expo integration friction, licence cleanliness, fre
 ## Caveats
 
 - Figma plugin claims for Lucide, Phosphor, Hugeicons, and Simple Icons rest on search snippets (including the projects' own READMEs / Figma Community URLs) — the Figma Community listings themselves were not opened, so install counts / current availability are not directly verified.
-- The "Claude Code icon" identification is inferential: Simple Icons ships a `claude` slug used for Claude Code (confirmed via the terra-tools LICENSE.md table and the FreeVectorIcons pack listing "Claude"/"Claudecode"). If dang meant a different specific repo (e.g. a `claude-code-icon` repo), that exact repo was not found — Simple Icons is the matching candidate.
+- The "Claude Code icon" identification is inferential: Simple Icons ships a `claude` slug used for Claude Code (confirmed via the terra-tools LICENSE.md table and the FreeVectorIcons pack listing "Claude"/"Claudecode"). If the owner meant a different specific repo (e.g. a `claude-code-icon` repo), that exact repo was not found — Simple Icons is the matching candidate.

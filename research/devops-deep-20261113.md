@@ -148,7 +148,7 @@ The draft's timeline contradicted its own queue figure (a 12:00 start with a 90-
 - [ ] `eas.json` committed (§a.2); EAS project linked (`eas init`); env vars set (§a.3); `expo-updates` installed + `eas update:configure` run (see §b.1).
 - [ ] **Dry-run cloud preview build, non-interactive.** Record: time kicked off, time it left the queue, time it finished. Verify the download is a `.apk`. Install on the demo phone (download link or `adb install -r` — see §b.2). Kill → reopen → Convex round-trip green.
 - [ ] **Local-build dry run on the café machine** (the laptop/MacBook that will be at the café): `eas build --local --platform android --profile preview`. Requires Android SDK **+ NDK** + JDK 17, macOS/Linux only (Windows not officially supported); output defaults to the current directory (override with `EAS_LOCAL_BUILD_ARTIFACTS_DIR`); EAS Secret-visibility vars unsupported locally. Source: https://docs.expo.dev/build-reference/local-builds/
-- [ ] Demo-phone checks (§b.2). Pitch deck started (slides: Thịnh volunteered in the group 12/11).
+- [ ] Demo-phone checks (§b.2). Pitch deck started (slides: a teammate volunteered in the group 12/11).
 
 ### Saturday 14/11 — all times ICT
 
@@ -253,7 +253,7 @@ jobs:
 - [ ] **Team + contact** — all four members' names on the submission; one phone number that works.
 - [ ] **Pre-built disclosure** — one paragraph in SUBMISSION.md stating what was pre-built (scaffold, CI, EAS config, research) vs built 11:00–16:00. The organizers explicitly allow prep; disclosure is what keeps it honest.
 - [ ] **Final phone state** — APK installed, app killed (not backgrounded), phone charged >50%, café Wi-Fi + mobile data both tested, AI endpoint responding. The phone is handed to the pitcher charged and ready, not still plugged into a laptop.
-- [ ] **Pitch ready** — 5-minute pitch rehearsed 15:30–15:45 on the real phone; slides done (Thịnh volunteered 12/11); one pitcher named before 15:30.
+- [ ] **Pitch ready** — 5-minute pitch rehearsed 15:30–15:45 on the real phone; slides done (a teammate volunteered 12/11); one pitcher named before 15:30.
 
 ## (e) Top 8 traps — what breaks at demo time, and the fix
 
@@ -277,7 +277,7 @@ jobs:
 - **Demo-phone reality:** storage / Android version / battery / backup phone / `adb install -r` + same-signature rule — §(b.2).
 - **Convex deploy failure:** if the Convex deployment or schema push fails by 12:00, the trigger is explicit — switch the AI endpoint to the Supabase Edge Function fallback (already the stack's fallback decision) and say so in the group; do not debug Convex past 12:00 while the demo clock runs. Owner: backend track (Milo).
 - **Café network failure:** phone hotspot for the build machine; `node_modules` pre-downloaded Friday night; EAS cloud builds need internet throughout — if the café network dies, the local-build backup (§b) and the APK already on the phone are the plan, not a new cloud build.
-- **Pitch artefact:** slides (Thịnh volunteered 12/11) + named pitcher + 15:30–15:45 rehearsal — §(d).
+- **Pitch artefact:** slides (a teammate volunteered 12/11) + named pitcher + 15:30–15:45 rehearsal — §(d).
 - **EAS account ownership + non-interactive flags + first-build keystore:** §(b) intro — `--non-interactive` on every agent-run build, keystore generated Friday with a human present, account + November usage checked Friday night.
 - **Expo Go same-account rule (iPhone, since 03/09/2026):** §(b.2) — sign in Friday night if any Expo Go path survives the §0 decision.
 

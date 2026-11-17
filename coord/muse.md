@@ -19,7 +19,7 @@ with one exception: succession (see below) is a replacement, not a rotation.
 → round), filled BEFORE dispatch; claim arbitration (coordinator-first-seen
 order + deterministic tie-break); board states + the stop decision; merge
 order + trial merges + landing; escalation to humans (`input-required`,
-run-invalid); human-facing milestone posts (Optimus group, one line,
+run-invalid); human-facing milestone posts (team group chat, one line,
 milestones only); discovery routing (when a worker posts a discovery that
 changes other slices, re-publish it onto the board within one merge pass).
 
@@ -40,7 +40,7 @@ provided it is not the owner of either branch in the pair.
 **Deputy + succession:** at run start the coordinator names a deputy and a
 backup deputy and records them in the board fields
 (`Deputy: <name> (backup: <name>)`). The deputy must not be Mie — Mie cannot
-speak in the Optimus group at all. The deputy (and backup) must be named only
+speak in the team group chat at all. The deputy (and backup) must be named only
 from agents whose machines pass the §9 gate-tooling check. The coordinator is
 stale only if BOTH hold: (a) pending work unprocessed for >60 min, AND (b) no
 coordinator commit in that window. Two-phase takeover: the deputy posts
@@ -221,7 +221,7 @@ work — proof of life, not a worker rule.)
   delete the other side's lines, and note it in your file for the coordinator
   to transcribe.
 
-## Milestone posts to the Optimus group
+## Milestone posts to the team group chat
 
 - The coordinator posts a short status line ONLY when a milestone lands (loop
   stopped, Figma export done, human return complete, run invalid + redo started).

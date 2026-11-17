@@ -314,7 +314,7 @@ Gate: PASS (detect 0 findings, consistency 0 FAIL, copy-lint 0 FAIL)
 - Heuristics checklist and approved crawler rules with concrete
   examples: `skills/frontend-kit/references/ux-checklist.md`.
 
-## Thuỳ Anh mappings (interpretive garnish, not load-bearing)
+## Task-brief mappings (interpretive garnish, not load-bearing)
 
 The four quotes below are as given in the task brief, not
 independently verified against a primary source. These mappings are

@@ -101,6 +101,6 @@
 3. **Drawing:** unDraw (scenes) + Open Peeps (characters), rendered via react-native-svg. Both free, no attribution, no signup.
 4. **Reference:** steal motion/glass patterns from fig-app-starter-kit (SDK 58, MIT); drop the expo-motion SKILL.md into the team's skill set.
 
-## Figma-editable preference (dang, 23:52)
+## Figma-editable preference (the owner, 23:52)
 
 When choosing skills/templates/assets, PREFER options editable via Figma (not mandatory, but encouraged). Note per candidate whether it ships Figma files / is Figma-editable.
