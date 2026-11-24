@@ -101,10 +101,13 @@ def _gui_env():
     return env
 
 
-def ensure_running(wait_s=20):
+def ensure_running(wait_s=60):
     """Attach if CDP answers; otherwise launch Discord detached with the debug port.
 
     Returns {"running": True, "launched": bool}. Never kills Discord.
+    Cold launch after a full quit can take >20s to answer CDP on this
+    machine (observed 2026-11-24: 20s poll expired, CDP came up just after),
+    so the default wait is 60s.
     """
     if cdp_reachable():
         return {"running": True, "launched": False}
@@ -132,6 +135,13 @@ def list_targets():
 
 def resolve_page_target():
     """Pick the Discord page target at runtime. NEVER hardcode a target id."""
+    if not cdp_reachable():
+        raise DiscordError(
+            "Discord CDP is not reachable on port 9229. Discord is either not "
+            "running, or it was launched without --remote-debugging-port=9229. "
+            "CDP control is opt-in (default off): run `session start` to launch "
+            "Discord with CDP enabled, or launch it yourself with "
+            "--remote-debugging-port=9229.")
     targets = list_targets()
     pages = [t for t in targets if t.get("type") == "page"
              and "discord.com" in (t.get("url") or "")]
@@ -181,7 +191,10 @@ READ_JS = """(() => {
     const timeEl = li.querySelector('time');
     const timestamp = timeEl?.getAttribute('datetime') || timeEl?.textContent || '';
     const content = li.querySelector('div[class*="messageContent"]')?.innerText || '';
-    return { id, author, timestamp, content };
+    const attachments = [...li.querySelectorAll(
+      'a[href*="cdn.discordapp.com"], a[href*="media.discordapp.net"]'
+    )].map(a => a.getAttribute('href'));
+    return { id, author, timestamp, content, attachments };
   });
 })()"""
 
@@ -215,15 +228,42 @@ CHANNEL_TITLE_JS = """(() => {
 })()"""
 
 
+def _wait_for(ws_url, expression, timeout=15, what="condition"):
+    """Poll a Runtime.evaluate expression until truthy (channel still loading)."""
+    deadline = time.time() + timeout
+    last = None
+    while time.time() < deadline:
+        try:
+            last = evaluate(ws_url, expression)
+        except DiscordError:
+            last = None
+        if last:
+            return last
+        time.sleep(0.5)
+    raise DiscordError(f"Timed out waiting for {what} ({timeout}s). "
+                       "The channel may still be loading, or Discord changed its DOM.")
+
+
 def read_messages(channel_id, limit=20):
     """Open the channel, then scrape the visible message window.
 
     Only the viewport window is in the DOM; `limit` caps the returned rows.
+    Scrolling up loads older messages, but Discord virtualizes the list:
+    scrolling away can unload the newest rows, so the scroller is always
+    returned to the bottom before the final read (2026-11-24: a limit=10
+    read returned zero rows until this was added).
     Returns {"channel_id", "messages": [...], "count", "truncated"}.
     """
     opened = open_channel(channel_id)
     target = resolve_page_target()
     ws_url = target["webSocketDebuggerUrl"]
+    messages = []
+    _wait_for(
+        ws_url,
+        "document.querySelectorAll('li[id^=\"chat-messages-\"]').length",
+        timeout=15, what="messages to appear",
+    )
+    messages = evaluate(ws_url, READ_JS) or []
     # Scroll the message scroller up to load older messages (bounded).
     scroll_js = """(() => {
       const sc = document.querySelector('[class*="scroller"][class*="messages"], [class*="messagesWrapper"] [class*="scroller"]');
@@ -231,10 +271,14 @@ def read_messages(channel_id, limit=20):
       sc.scrollTop = 0;
       return document.querySelectorAll('li[id^="chat-messages-"]').length;
     })()"""
-    seen = 0
+    scroll_bottom_js = """(() => {
+      const sc = document.querySelector('[class*="scroller"][class*="messages"], [class*="messagesWrapper"] [class*="scroller"]');
+      if (!sc) return 0;
+      sc.scrollTop = sc.scrollHeight;
+      return 1;
+    })()"""
+    seen = len(messages or [])
     for _ in range(5):
-        count = evaluate(ws_url, READ_JS)
-        seen = len(count or [])
         if seen >= limit:
             break
         before = seen
@@ -243,7 +287,19 @@ def read_messages(channel_id, limit=20):
         after = len(evaluate(ws_url, READ_JS) or [])
         if after <= before:
             break
+        seen = after
+    # Always come back to the bottom: the newest messages are what callers
+    # (and send read-backs) need, and a scrolled-up view may have unloaded them.
+    evaluate(ws_url, scroll_bottom_js)
+    time.sleep(1)
     messages = evaluate(ws_url, READ_JS) or []
+    if not messages:
+        _wait_for(
+            ws_url,
+            "document.querySelectorAll('li[id^=\"chat-messages-\"]').length",
+            timeout=10, what="messages to reappear after scroll",
+        )
+        messages = evaluate(ws_url, READ_JS) or []
     if not messages:
         raise DiscordError(f"No messages found in the DOM for channel {channel_id}. "
                            "The channel may still be loading, or Discord changed its DOM.")
@@ -292,7 +348,13 @@ def send_message(channel_id, text):
     """Focus the composer, insert text, press Enter. Returns CDP send result."""
     opened = open_channel(channel_id)
     target = resolve_page_target()
-    result = _run_node(["send", target["webSocketDebuggerUrl"], text])
+    ws_url = target["webSocketDebuggerUrl"]
+    # The channel view may still be rendering after navigation (observed
+    # 2026-11-24: "composer not found" right after a slow read). Wait for it.
+    _wait_for(ws_url,
+              "!!document.querySelector('div[role=\"textbox\"][contenteditable=\"true\"]')",
+              timeout=15, what="composer")
+    result = _run_node(["send", ws_url, text])
     result["channel_id"] = str(channel_id)
     result["url"] = opened["url"]
     return result
@@ -305,7 +367,10 @@ def send_file(channel_id, file_path, text=""):
         raise DiscordError(f"File not found: {file_path}")
     opened = open_channel(channel_id)
     target = resolve_page_target()
-    args = ["sendfile", target["webSocketDebuggerUrl"], str(path)]
+    ws_url = target["webSocketDebuggerUrl"]
+    _wait_for(ws_url, "!!document.querySelector('input[type=file]')",
+              timeout=15, what="file input")
+    args = ["sendfile", ws_url, str(path)]
     if text:
         args.append(text)
     result = _run_node(args)

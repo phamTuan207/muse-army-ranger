@@ -30,6 +30,47 @@ A bare channel id is treated as a DM channel id. `channels open` sets the
 current channel in the session file (`~/.cli-anything-discord/session.json`),
 so later `messages read/send` can omit the id.
 
+## Machine-private vs portable
+
+This CLI was built for ONE machine (the owner's Omarchy laptop) and is
+machine-private setup, not a generic tool. The owner-design principle
+(2026-11-24): apps on his machine are deliberately optimized for AI, but
+a repo for outsiders must work on stock, unoptimized apps, so any
+machine-private optimization that goes into a shared repo must be
+OPTIONAL (opt-in), default off.
+
+- Machine-private (only works on the owner's laptop as built): Discord
+  binary at `/home/james/.local/opt/Discord/discord`, CDP port 9229, the
+  GUI launch env (`DISPLAY=:0` XWayland, `XDG_RUNTIME_DIR=/run/user/1000`,
+  `HYPRLAND_INSTANCE_SIGNATURE`), install via `uv tool install
+  --editable`, the test DM with Violet Joestar (channel
+  865272264831139840). All of these live in `utils/discord_backend.py`
+  (`DISCORD_BIN`, `CDP_PORT`, `_gui_env()`, `TEST_DM_CHANNEL_ID`) and must
+  be re-pointed to run anywhere else.
+- Portable (worth reusing anywhere): the pattern. Launch any
+  Electron/Chromium app with `--remote-debugging-port=<port>`, resolve the
+  page target at runtime via `GET /json/list` (never hardcode a target
+  id), drive it with `Runtime.evaluate` / `Input.insertText` /
+  `Input.dispatchKeyEvent` / `DOM.setFileInputFiles`. The CDP client
+  (`utils/cdp_client.mjs`: `targets`, `version`, `eval`, `navigate`,
+  `send`, `sendfile`) is app-agnostic. The selector discipline ports too:
+  prefer roles, aria-labels and stable `id`/`data-*` hooks; hashed class
+  suffixes are fallbacks only and drift per build.
+
+## Optional / opt-in (default: OFF)
+
+CDP control is OPTIONAL and OFF by default. A normally launched Discord
+has no CDP endpoint, and this CLI does nothing to it: it does not relaunch
+Discord on its own, does not inject anything, and does not change any
+setting. Opt in with `session start` (launches Discord detached with
+`--remote-debugging-port=9229`) or by launching Discord yourself with
+that flag. Opt out any time by quitting Discord normally or with
+`session stop --force`; after a normal quit Discord is back to stock and
+the CLI is inert. When CDP is off, the CLI fails LOUDLY with the fix
+(`session attach` / `messages read` both name `session start` and the
+flag), never silently, and never touches anything else. `status` is the
+read-only probe: it returns `discord_running: false` with `ok: true`.
+
 ## Hard dependencies
 
 - The official Discord desktop client, logged in, on the same machine.
@@ -101,5 +142,10 @@ there). It is not legal advice. Discord can change its terms at any time.
 
 ## Tests
 
-See `tests/TEST.md` (plan + results). Phase 5 test worker owns the full
-suite; `tests/test_core.py` ships unit tests for session handling.
+See `tests/TEST.md` (plan + results). Full suite: 22 tests (7 unit + 15
+E2E), 22 passed in 54.99s on the laptop 2026-11-24, live against the real
+Discord client (send read-back message 1574784672334880920, file message
+1574784744309268551 with a `cdn.discordapp.com` attachment, full quit +
+relaunch with `launched: true`). Run it with
+`CLI_ANYTHING_FORCE_INSTALLED=1 python3 -m pytest cli_anything/discord/tests/ -v -s`
+from the package dir on the laptop.

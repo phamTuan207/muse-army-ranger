@@ -277,7 +277,12 @@ def session_stop(ctx, force):
         _fail(ctx, "Refusing to quit Discord without --force. "
                    "Run `session stop --force` if you really mean it.")
     import subprocess
-    proc = subprocess.run(["pkill", "-x", "discord"], capture_output=True, text=True)
+    # Process comm is "Discord" (capital D) on this install; `pkill -x discord`
+    # matches nothing (verified 2026-11-24: pgrep -x discord rc=1, -x Discord
+    # matches). Try the real name first, lowercase as a fallback.
+    proc = subprocess.run(["pkill", "-x", "Discord"], capture_output=True, text=True)
+    if proc.returncode != 0:
+        proc = subprocess.run(["pkill", "-x", "discord"], capture_output=True, text=True)
     _emit(ctx, {"ok": proc.returncode in (0, 1),
                 "message": "Discord quit (pkill discord)." if proc.returncode == 0
                 else "No Discord process found."})

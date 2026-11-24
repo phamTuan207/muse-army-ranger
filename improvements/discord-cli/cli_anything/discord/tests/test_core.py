@@ -10,6 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
 from cli_anything.discord.core import session as session_mod  # noqa: E402
+from cli_anything.discord.utils import discord_backend as backend  # noqa: E402
 
 
 def test_locked_save_and_load_roundtrip(tmp_path):
@@ -52,3 +53,14 @@ def test_double_save_no_corruption(tmp_path):
         session_mod.save_session({"cdp_port": 9229, "target_id": f"t{i}"}, p)
     loaded = session_mod.load_session(p)
     assert loaded["target_id"] == "t4"
+
+
+def test_test_dm_constant_is_owner_designated_dm():
+    assert backend.TEST_DM_CHANNEL_ID == "865272264831139840"
+
+
+def test_read_js_extracts_attachments():
+    # A file send must be verifiable by read-back: each message row needs an
+    # `attachments` array of CDN hrefs (added by the test worker, Phase 5).
+    assert "attachments" in backend.READ_JS
+    assert "cdn.discordapp.com" in backend.READ_JS
